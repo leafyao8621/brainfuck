@@ -41,7 +41,7 @@ int parser_load_from_file(FILE *fin) {
             if (size_stack) {
                 cap_stack <<= 1;
                 stack = realloc(stack, cap_stack);
-                if (!code) {
+                if (!stack) {
                     return 1;
                 }
                 cur_stack = stack + size_stack;
