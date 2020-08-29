@@ -63,6 +63,10 @@ int parser_load_from_file(FILE *fin) {
             ++cur;
             break;
         case ']':
+            if (!size_stack) {
+                free(stack);
+                return 2;
+            }
             --size_stack;
             --cur_stack;
             ++size;
