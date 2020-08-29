@@ -27,7 +27,7 @@ int parser_load_from_file(FILE *fin) {
             ++size;
             if (size > cap_code) {
                 cap_code <<= 1;
-                code = realloc(code, cap_code);
+                code = realloc(code, sizeof(unsigned long long) * cap_code);
                 if (!code) {
                     return 1;
                 }
@@ -40,7 +40,7 @@ int parser_load_from_file(FILE *fin) {
             ++size_stack;
             if (size_stack) {
                 cap_stack <<= 1;
-                stack = realloc(stack, cap_stack);
+                stack = realloc(stack, sizeof(unsigned long long) * cap_stack);
                 if (!stack) {
                     return 1;
                 }
@@ -52,7 +52,7 @@ int parser_load_from_file(FILE *fin) {
             ++size;
             if (size > cap_code) {
                 cap_code <<= 1;
-                code = realloc(code, cap_code);
+                code = realloc(code, sizeof(unsigned long long) * cap_code);
                 if (!code) {
                     return 1;
                 }
@@ -72,7 +72,7 @@ int parser_load_from_file(FILE *fin) {
             ++size;
             if (size > cap_code) {
                 cap_code <<= 1;
-                code = realloc(code, cap_code);
+                code = realloc(code, sizeof(unsigned long long) * cap_code);
                 if (!code) {
                     return 1;
                 }
