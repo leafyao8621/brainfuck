@@ -1,3 +1,6 @@
 .vscode
 bfc_mips/bfc
 bfc_mips/*.s
+bfi/src/*.o
+bfi/dump
+bfi/bfi
