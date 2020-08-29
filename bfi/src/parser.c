@@ -77,7 +77,7 @@ int parser_load_from_file(FILE *fin) {
             *(char*)cur = (char)in;
             ((unsigned short*)cur)[1] = *(unsigned short*)cur_stack;
             ((unsigned*)cur)[1] = ((unsigned*)cur_stack)[1];
-            ((unsigned*)(code + ((unsigned*)cur_stack)[1]))[1] = size;
+            ((unsigned*)(code + ((unsigned*)cur_stack)[1]))[1] = size - 1;
             ++cur;
             break;
         default:
@@ -85,6 +85,9 @@ int parser_load_from_file(FILE *fin) {
         }
     }
     free(stack);
+    if (size_stack) {
+        return 2;
+    }
     return 0;
 }
 
@@ -94,7 +97,7 @@ void parser_finalize(void) {
 
 int parser_log_code(FILE *fout) {
     unsigned long long *cur = code;
-    unsigned long long buf = 0;
+    char buf = 0;
     for (unsigned i = 0; i < size; ++i, ++cur) {
         buf = *(char*)cur;
         switch (buf) {
